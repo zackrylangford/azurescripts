@@ -65,7 +65,7 @@ echo "Installing Wordpress and creating installation directory"
 echo -e $(wget https://wordpress.org/latest.zip)
 echo -e $(sudo apt-get install unzip -y)
 echo -e $(unzip latest.zip)
-echo -e $(sudo cp -r /home/azureuser/wordpress/* /var/www/html/)
+echo -e $(sudo cp -r /home/azureuser/wordpress-install/wordpress/* /var/www/html/)
 echo -e $(sudo chown -R www-data:www-data /var/www/html/)
 echo -e $(sudo chmod -R 755 /var/www/html/)
 echo -e $(sudo rm -rf /var/www/html/index.html)
@@ -76,7 +76,7 @@ echo "Successfully installed Wordpress..."
 #Configure Apache for Wordpress
 
 echo "Configuring Apache for Wordpress" 
-echo -e $(touch /home/azureuser/wordpress.conf.original)
+echo -e $(sudo touch /home/azureuser/wordpress.conf.original)
 
 echo "
 <VirtualHost *:80>
@@ -125,7 +125,7 @@ RewriteRule . /index.php [L]
 # END WordPress" > /home/.htaccess
 echo -e $(sudo cp /home/azureuser/.htaccess /var/www/html/)
 echo -e $(sudo rm /home/.htaccess)
-echo -e $(sudo cp /home/azureuser/apache2.conf /etc/apache2/apache2.conf)
+echo -e $(sudo cp /home/azureuser/wordpress-install/apache2.conf /etc/apache2/apache2.conf)
 echo "Fixed permalinks!"
 echo -e $(sudo systemctl reload apache2)
 echo -e $(sudo systemctl restart apache2)
