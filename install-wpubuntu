@@ -77,7 +77,7 @@ echo "Successfully installed Wordpress..."
 #Configure Apache for Wordpress
 
 echo "Configuring Apache for Wordpress" 
-echo -e $(sudo touch /home/azureuser/wordpress.conf.original)
+echo -e $(touch /home/azureuser/wordpress.conf.original)
 
 echo -e $("
 <VirtualHost *:80>
