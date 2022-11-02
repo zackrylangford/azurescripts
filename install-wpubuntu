@@ -110,7 +110,7 @@ echo "Database configured"
 
 ## fix .htaccess file so that permalinks work correctly
 echo "Fixing Wordpress permalinks..."
-echo -e $(touch /home/.htaccess)
+echo -e $(sudo touch /home/azureuser/.htaccess)
 echo -e $(sudo rm /var/www/html/.htaccess)
 echo "
 # BEGIN WordPress
@@ -123,7 +123,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
 # END WordPress" > /home/.htaccess
-echo -e $(sudo cp /home/.htaccess /var/www/html/)
+echo -e $(sudo cp /home/azureuser/.htaccess /var/www/html/)
 echo -e $(sudo rm /home/.htaccess)
 echo "Fixed permalinks!"
 echo -e $(sudo systemctl reload apache2)
