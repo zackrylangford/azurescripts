@@ -76,7 +76,7 @@ echo "Successfully installed Wordpress..."
 #Configure Apache for Wordpress
 
 echo "Configuring Apache for Wordpress" 
-echo -e $(sudo touch /home/azureuser/wordpress.conf.original)
+echo -e $(sudo /home/azureuser/wordpress.conf.original)
 
 echo "
 <VirtualHost *:80>
@@ -110,7 +110,7 @@ echo "Database configured"
 
 ## fix .htaccess file so that permalinks work correctly
 echo "Fixing Wordpress permalinks..."
-echo -e $(sudo touch /home/azureuser/.htaccess)
+echo -e $(touch /home/azureuser/.htaccess)
 echo -e $(sudo rm /var/www/html/.htaccess)
 echo "
 # BEGIN WordPress
@@ -122,7 +122,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
-# END WordPress" > /home/.htaccess
+# END WordPress" > /home/azureuser/.htaccess
 echo -e $(sudo cp /home/azureuser/.htaccess /var/www/html/)
 echo -e $(sudo rm /home/.htaccess)
 echo -e $(sudo cp /home/azureuser/wordpress-install/apache2.conf /etc/apache2/apache2.conf)
