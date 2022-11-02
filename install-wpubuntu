@@ -79,7 +79,7 @@ echo "Successfully installed Wordpress..."
 echo "Configuring Apache for Wordpress" 
 echo -e $(touch /home/azureuser/wordpress.conf.original)
 
-echo -e $("
+echo "
 <VirtualHost *:80>
     DocumentRoot /var/www/html/wordpress
     <Directory /var/www/html/wordpress>
@@ -92,7 +92,7 @@ echo -e $("
          Options FollowSymLinks
          Require all granted
     </Directory>
-    </VirtualHost>" >  /home/azureuser/wordpress.conf.original)
+    </VirtualHost>" > /home/azureuser/wordpress.conf.original
 echo -e $(sudo cp /home/azureuser/wordpress.conf.original /etc/apache2/sites-available/wordpress.conf)
 echo -e $(sudo a2ensite wordpress)
 echo -e $(sudo a2enmod rewrite)
