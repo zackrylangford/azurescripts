@@ -94,7 +94,6 @@ echo -e $("
     </Directory>
     </VirtualHost>" >  /home/azureuser/wordpress.conf.original)
 echo -e $(sudo cp /home/azureuser/wordpress.conf.original /etc/apache2/sites-available/wordpress.conf)
-echo -e $(sudo rm /home/azureuser/wordpress.conf.original)
 echo -e $(sudo a2ensite wordpress)
 echo -e $(sudo a2enmod rewrite)
 echo -e $(sudo systemctl restart apache2)
