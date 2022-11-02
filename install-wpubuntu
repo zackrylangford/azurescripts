@@ -100,7 +100,7 @@ echo "Apache configured successfully"
 
 # Configure mysql database for wordpress
 echo "configuring database" 
-mysql -uroot -p$db_root_password <<QUERY_INPUT
+sudo mysql -u root
 CREATE DATABASE $wordpress_db_name;
 CREATE USER $wp_username IDENTIFIED BY '$db_root_password';
 GRANT ALL PRIVILEGES ON $wordpress_dbname.* TO $wp_username;
