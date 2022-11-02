@@ -65,7 +65,7 @@ echo "Installing Wordpress and creating installation directory"
 echo -e $(wget https://wordpress.org/latest.zip)
 echo -e $(sudo apt-get install unzip -y)
 echo -e $(unzip latest.zip)
-echo -e $(sudo mkdir /var/www/html/wordpress
+echo -e $(sudo mkdir /var/www/html/wordpress)
 echo -e $(sudo cp -r /home/azureuser/wordpress/* /var/www/html/wordpress/)
 echo -e $(sudo chown -R www-data:www-data /var/www/html/wordpress)
 echo -e $(sudo chmod -R 755 /var/www/html/wordpress)
