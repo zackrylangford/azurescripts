@@ -105,6 +105,31 @@ sudo mysql -u root -e "CREATE DATABASE $wordpress_db_name;"
 sudo mysql -u root -e "CREATE USER '$wp_username'@'%' IDENTIFIED BY '$db_root_password';"
 sudo mysql -u root -e "GRANT ALL PRIVILEGES on *.* to '$wp_username'@'%';"
 sudo mysql -u root -e "FLUSH PRIVILEGES;"
+
+echo "Database configured"
+
+## fix .htaccess file so that permalinks work correctly
+echo "Fixing Wordpress permalinks..."
+echo -e $(touch /home/.htaccess)
+echo -e $(sudo rm /var/www/html/.htaccess)
+echo "
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress" > /home/.htaccess
+echo -e $(sudo cp /home/.htaccess /var/www/html/)
+echo -e $(sudo rm /home/.htaccess)
+echo "Fixed permalinks!"
+echo -e $(sudo systemctl reload apache2)
+echo -e $(sudo systemctl restart apache2)
+
+
  
 echo "Success!!" 
 
